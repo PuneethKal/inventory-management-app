@@ -88,7 +88,7 @@ export default function Login() {
                 bgcolor={color4}
                 boxShadow={"3px 3px 2px 1px #d3d3d3 "}
                 borderRadius={"2px"}
-                justifyContent={"center``"}
+                justifyContent={"center"}
             >
                 <Typography variant="h3" color={color2} fontFamily={"Comic-Sans"}>
                     Inventory Manager

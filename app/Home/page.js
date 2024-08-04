@@ -79,15 +79,15 @@ export default function Home() {
   },[])
   
   async function logout(){
-      const auth = getAuth();
-      signOut(auth).then(() => {
-      // Sign-out successful.
-      console.log("Signout Success")
-      router.push("/")
-      }).catch((error) => {
-      // An error happened.
-        });
-    }
+    const auth = getAuth();
+    signOut(auth).then(() => {
+    // Sign-out successful.
+    console.log("Signout Success")
+    router.push("/")
+    }).catch((error) => {
+    // An error happened.
+      });
+  }
 
   return (
     <Box
