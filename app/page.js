@@ -118,6 +118,7 @@ export default function Login() {
                     ></TextField>
                     <TextField
                         label={"Password"}
+                        type={"password"}
                         helperText={errorMsg}
                         onChange={(e) => {
                             setPassword(e.target.value)
