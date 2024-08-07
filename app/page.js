@@ -129,8 +129,6 @@ export default function Login() {
                         <Button onClick={(e) => { register(); setErrorMsg("") }} >Register</Button>
                     </Box>
                 </Stack>
-
-
             </Box>
         </Box>
     )
