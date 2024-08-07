@@ -26,7 +26,7 @@ export default function Login() {
                 console.log("Success")
                 // Signed up 
                 setUser(userCredential.user)
-                console.log(user)
+                //console.log(user)
                 router.push('/Home')
             })
             .catch((error) => {
@@ -58,7 +58,7 @@ export default function Login() {
             .then((userCredential) => {
                 // Signed in 
                 setUser(userCredential.user)
-                console.log(user)
+                //console.log(user)
                 router.push('/Home')
             })
             .catch((error) => {

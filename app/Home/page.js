@@ -114,8 +114,8 @@ export default function Home() {
       body: JSON.stringify({ input: `${input_msg + list}` })
     }).then(async (res) => {
       const data = await res.json()
-      console.log(data)
-      console.log(data.output)
+      //console.log(data)
+      //console.log(data.output)
       setOutput(data.output)
       return data
     })
