@@ -1,5 +1,5 @@
 "use client"
-import { Box, Button, Modal, Stack, Table, TextField, Typography, Grid, Paper, ButtonGroup } from "@mui/material";
+import { Box, Button, Modal, Stack, Table, TextField, Typography, Grid, Paper, ButtonGroup, Hidden } from "@mui/material";
 import { wrapApiHandler } from "next/dist/server/api-utils";
 import { firestore } from "@/firebase";
 import { collection, getDoc, addDoc, QuerySnapshot, query, onSnapshot, doc, setDoc, deleteDoc, where, documentId } from "firebase/firestore";
@@ -103,15 +103,12 @@ export default function Home() {
       list.push(doc.id)
     });
 
-    const input_msg = `Please list 1 recipes that an be made using the items below. The recipes can have items not in the list but
-    prioritize recipes with ingredients from the ingredients below.\n`    
-
     const response = fetch('./api/Gemini', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ input: `${input_msg + list}` })
+      body: JSON.stringify({ input: `${list}` })
     }).then(async (res) => {
       const data = await res.json()
       //console.log(data)
@@ -237,7 +234,7 @@ export default function Home() {
 
         </Box>
 
-        < Box width="800px" height="80px" padding={"10px 15px 10px 10px"} display={"flex"} flexDirection={"column"}>
+        < Box width="800px" height="80px" padding={"10px 15px 10px 10px"} display={"flex"} flexDirection={"column"} sx={{mb: output == ""? 0 : 50}}>
 
           <Box
             width="100%"
@@ -248,9 +245,9 @@ export default function Home() {
             boxShadow={"3px 3px 2px 1px #d3d3d3 "}
             borderRadius={"2px"}
             alignContent={"flex-start"}
-            mb={"30px"}
+            mb={"40px"}
           >
-            <Typography variant="h3" color={color2} flexGrow={1} padding={"auto"} >
+            <Typography variant="h3" color={color2} flexGrow={1} padding={"auto"}  >
               Recipe Suggestion
             </Typography>
             <Button
@@ -269,11 +266,16 @@ export default function Home() {
             bgcolor={color4}
             boxShadow={"3px 3px 2px 1px #d3d3d3 "}
             borderRadius={"2px"}
+            overflow={'auto'}
+            minHeight= {output == ""? '0px': "300px"}
+            sx={{
+              visibility: output == ""? "hidden": "visible",
+            }}
           >
-            <Typography variant="caption">
-              {output.split("\n")}
-            </Typography>
+            <pre>{output}</pre>
+
           </Box>
+          
         </Box>
 
       </Box>
